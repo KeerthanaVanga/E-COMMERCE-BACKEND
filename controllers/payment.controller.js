@@ -72,8 +72,8 @@ const createPayment = async (req, res) => {
         line_items: lineItems,
         mode: "payment",
         billing_address_collection: "required",
-        success_url: `${process.env.CLIENT_URL}/payment-success?orderId=${order._id}`,
-        cancel_url: `${process.env.CLIENT_URL}/payment-failed?orderId=${order._id}`,
+        success_url: `${process.env.USER_PANEL}/payment-success?orderId=${order._id}`,
+        cancel_url: `${process.env.USER_PANEL}/payment-failed?orderId=${order._id}`,
         shipping_address_collection: {
           allowed_countries: ["IN"],
         },

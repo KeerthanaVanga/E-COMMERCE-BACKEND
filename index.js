@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: ["http://localhost:5173", "http://localhost:5174"], // replace with actual frontend origin
+  origin: [process.env.FRONTEND_URL, process.env.ADMIN_PANEL], // replace with actual frontend origin
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,

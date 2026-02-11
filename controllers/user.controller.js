@@ -42,7 +42,7 @@ const registerUser = async (req, res) => {
     const exists = await findUserByEmail(email);
     if (exists) {
       return res
-        .status(404)
+        .status(400)
         .json({ success: false, message: "User Already Exists" });
     }
 
@@ -103,7 +103,7 @@ const userRefresh = async (req, res) => {
 
     const decoded = jwt.verify(
       userRefreshToken,
-      process.env.USER_REFRESH_TOKEN_SECRET
+      process.env.USER_REFRESH_TOKEN_SECRET,
     );
 
     const accessToken = await generateUserAccessToken(decoded.id);
@@ -122,7 +122,7 @@ const logout = async (req, res) => {
     if (userRefreshToken) {
       const decoded = jwt.verify(
         userRefreshToken,
-        process.env.USER_REFRESH_TOKEN_SECRET
+        process.env.USER_REFRESH_TOKEN_SECRET,
       );
     }
     res.clearCookie("userRefreshToken");
